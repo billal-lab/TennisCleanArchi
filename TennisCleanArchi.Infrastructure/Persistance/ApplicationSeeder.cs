@@ -1,13 +1,14 @@
-﻿using TennisCleanArchi.Domain;
+﻿using TennisCleanArchi.Application.Data;
+using TennisCleanArchi.Domain;
 using TennisCleanArchi.Shared;
 
 namespace TennisCleanArchi.Infrastructure.Persistance;
 
-public class ApplicationSeeder
+public sealed class ApplicationSeeder
 {
-    private readonly ApplicationDbContext _context;
+    private readonly IApplicationDbContext _context;
 
-    public ApplicationSeeder(ApplicationDbContext context)
+    public ApplicationSeeder(IApplicationDbContext context)
     {
         _context = context;
     }
@@ -117,5 +118,7 @@ public class ApplicationSeeder
         };
 
         await _context.Players.AddRangeAsync(players);
+
+        await _context.SaveChangesAsync();
     }
 }

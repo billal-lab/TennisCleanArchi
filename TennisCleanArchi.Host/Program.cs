@@ -1,3 +1,4 @@
+using TennisCleanArchi.Application;
 using TennisCleanArchi.Infrastructure;
 using TennisCleanArchi.Infrastructure.Persistance;
 
@@ -5,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddInfrastructure();
 
+builder.Services.AddApplication();
 builder.Services.AddControllers();
 
 var app = builder.Build();

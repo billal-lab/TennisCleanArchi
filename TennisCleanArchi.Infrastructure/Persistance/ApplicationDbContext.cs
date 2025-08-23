@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TennisCleanArchi.Application.Data;
 using TennisCleanArchi.Domain;
 using TennisCleanArchi.Shared;
 
 namespace TennisCleanArchi.Infrastructure.Persistance;
 
-public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options), IApplicationDbContext
 {
     public DbSet<Player> Players { get; set; }
 

@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using MediatR;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using TennisCleanArchi.Application.Data;
 using TennisCleanArchi.Infrastructure.OpenApi;
 using TennisCleanArchi.Infrastructure.Persistance;
+using TennisCleanArchi.Infrastructure.Validations;
 
 namespace TennisCleanArchi.Infrastructure;
 
@@ -14,7 +17,11 @@ public static class Startup
         builder.Services.AddDbContext<ApplicationDbContext>(
             options => options.UseInMemoryDatabase("TennisDatabase"));
 
+        builder.Services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
+
         builder.Services.AddTransient<ApplicationSeeder>();
+
+        builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
         builder.Services.AddSwagger();
 
@@ -24,6 +31,7 @@ public static class Startup
     public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder app)
     {
         app.UseSwaggerUI();
+        app.UseMiddleware<ValidationExceptionHandlingMiddleware>();
         return app;
     }
 }

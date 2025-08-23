@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="12.0.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
+    <PackageReference Include="MediatR" Version="13.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.8" />
+	<PackageReference Include="Mapster" Version="7.4.0" />
+	<PackageReference Include="Mapster.Core" Version="1.2.1" />
+	<PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TennisCleanArchi.Domain\TennisCleanArchi.Domain.csproj" />
     <ProjectReference Include="..\TennisCleanArchi.Shared\TennisCleanArchi.Shared.csproj" />
   </ItemGroup>
