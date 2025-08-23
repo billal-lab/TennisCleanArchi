@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TennisCleanArchi.Application\TennisCleanArchi.Application.csproj" />
+    <ProjectReference Include="..\TennisCleanArchi.Infrastructure\TennisCleanArchi.Infrastructure.csproj" />
+    <ProjectReference Include="..\TennisCleanArchi.Shared\TennisCleanArchi.Shared.csproj" />
+  </ItemGroup>
+
+</Project>
