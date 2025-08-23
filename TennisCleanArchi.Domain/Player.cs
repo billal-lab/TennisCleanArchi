@@ -1,6 +1,5 @@
 using System.ComponentModel.DataAnnotations;
-using TennisCleanArchi.Domain;
-
+using TennisCleanArchi.Shared;
 namespace TennisCleanArchi.Domain
 {
     public class Player
