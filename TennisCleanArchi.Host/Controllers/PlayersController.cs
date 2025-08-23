@@ -25,4 +25,19 @@ public class PlayersController : ControllerBase
         var players = await _mediator.Send(query);
         return Ok(players);
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetPlayerById(int id)
+    {
+        var query = new Application.Players.GetPlayerById.GetPlayerByIdRequest
+        {
+            Id = id
+        };
+        var player = await _mediator.Send(query);
+        if (player == null)
+        {
+            return NotFound();
+        }
+        return Ok(player);
+    }
 }

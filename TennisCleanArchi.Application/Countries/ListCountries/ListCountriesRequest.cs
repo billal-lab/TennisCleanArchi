@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using TennisCleanArchi.Application.Common;
 
-namespace TennisCleanArchi.Application.Players.ListPlayers;
+namespace TennisCleanArchi.Application.Countries.ListCountries;
 
-public record ListPlayersRequest : IRequest<PagedResult<PlayerDto>>
+public class ListCountriesRequest : IRequest<PagedResult<CountryDto>>
 {
     public int PageNumber { get; init; } = 1;
     public int PageSize { get; init; } = 10;

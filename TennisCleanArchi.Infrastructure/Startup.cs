@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TennisCleanArchi.Application.Data;
+using TennisCleanArchi.Infrastructure.Exceptions;
 using TennisCleanArchi.Infrastructure.OpenApi;
 using TennisCleanArchi.Infrastructure.Persistance;
 using TennisCleanArchi.Infrastructure.Validations;
@@ -31,7 +32,7 @@ public static class Startup
     public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder app)
     {
         app.UseSwaggerUI();
-        app.UseMiddleware<ValidationExceptionHandlingMiddleware>();
+        app.UseMiddleware<ExceptionHandlingMiddleware>();
         return app;
     }
 }
