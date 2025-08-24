@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36202.13 d17.14
+VisualStudioVersion = 17.14.36202.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TennisCleanArchi.Host", "TennisCleanArchi.Host\TennisCleanArchi.Host.csproj", "{4570DDA3-E611-4586-9910-0EB7BB9DF208}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TennisCleanArchi.Infrastructure", "TennisCleanArchi.Infrastructure\TennisCleanArchi.Infrastructure.csproj", "{9A82150B-078C-4908-9CBE-9FBB78E0001C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TennisCleanArchi.Shared", "TennisCleanArchi.Shared\TennisCleanArchi.Shared.csproj", "{B0C483E2-C787-4667-AF32-63F9990D1AC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TennisCleanArchi.Application.Tests", "TennisCleanArchi.Application.Tests\TennisCleanArchi.Application.Tests.csproj", "{E8AB4A18-473C-4A56-A19F-3F2C3CF9C397}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{B0C483E2-C787-4667-AF32-63F9990D1AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0C483E2-C787-4667-AF32-63F9990D1AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0C483E2-C787-4667-AF32-63F9990D1AC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8AB4A18-473C-4A56-A19F-3F2C3CF9C397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8AB4A18-473C-4A56-A19F-3F2C3CF9C397}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8AB4A18-473C-4A56-A19F-3F2C3CF9C397}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8AB4A18-473C-4A56-A19F-3F2C3CF9C397}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

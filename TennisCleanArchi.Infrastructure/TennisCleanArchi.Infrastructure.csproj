@@ -7,6 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="9.0.3" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.8">
+		<PrivateAssets>all</PrivateAssets>
+		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
+	<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.8" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.8" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.8">
+		<PrivateAssets>all</PrivateAssets>
+		<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
 	<ProjectReference Include="..\TennisCleanArchi.Application\TennisCleanArchi.Application.csproj" />
 	<ProjectReference Include="..\TennisCleanArchi.Shared\TennisCleanArchi.Shared.csproj" />
   </ItemGroup>
