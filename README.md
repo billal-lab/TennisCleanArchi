@@ -136,7 +136,7 @@ The project uses two GitHub Actions workflows:
 
 ### Live API
 
-- Access the live API and Swagger documentation: [Tennis API](https://tennis-api-c4azfefcdkdrfye0.canadacentral-01.azurewebsites.net/swagger)
+- Access the live API and Swagger documentation: [API](https://tennis-clean-archi-api-c7h7h5b9hnacacfv.francecentral-01.azurewebsites.net/swagger)
 
 ## How to Use the API
 
