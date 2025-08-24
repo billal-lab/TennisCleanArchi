@@ -29,7 +29,7 @@ public class GetSummaryStatsRequestHandler : IRequestHandler<GetSummaryStatsRequ
         var averageImc = await _dbContext.Players
             .AsNoTracking()
             .Where(p => p.Data.Height > 0 && p.Data.Weight > 0)
-            .AverageAsync(p => p.Data.Weight / Math.Pow(p.Data.Height / 100.0, 2), cancellationToken);
+            .AverageAsync(p => p.Data.Weight / 1000 * Math.Pow(p.Data.Height / 100.0, 2), cancellationToken);
 
         var count = await _dbContext.Players.Include(p => p.Country).CountAsync(cancellationToken);
 

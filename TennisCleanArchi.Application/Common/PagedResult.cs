@@ -5,7 +5,7 @@ public class PagedResult<T>
     public int PageNumber { get; init; }
     public int PageSize { get; init; }
     public int Total { get; init; }
-    public List<T> Items { get; init; } = new();
+    public List<T> Items { get; init; } = [];
 
     public PagedResult(int pageNumber, int pageSize, int total, List<T> items)
     {

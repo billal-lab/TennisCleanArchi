@@ -4,14 +4,9 @@ using TennisCleanArchi.Shared;
 
 namespace TennisCleanArchi.Infrastructure.Persistance;
 
-public sealed class ApplicationSeeder
+public sealed class ApplicationSeeder(IApplicationDbContext context)
 {
-    private readonly IApplicationDbContext _context;
-
-    public ApplicationSeeder(IApplicationDbContext context)
-    {
-        _context = context;
-    }
+    private readonly IApplicationDbContext _context = context;
 
     public async Task SeedAsync()
     {
