@@ -15,7 +15,7 @@ public class GetSummaryStatsRequestHandlerTests : BaseTests
     {
         _dbContext = Fixture.DbContext;
         _cachingService = Fixture.CachingService;
-        
+
         SeedData();
     }
 
@@ -65,25 +65,64 @@ public class GetSummaryStatsRequestHandlerTests : BaseTests
         _dbContext.SaveChanges();
     }
 
+    // 160, 165, 175 => median = 165
     [Fact]
-    public async Task GetSummaryStats_ReturnsCorrectStats()
+    public async Task GetSummaryStats_ReturnsCorrectStats_Odd()
     {
         // Arrange
         var handler = new GetSummaryStatsRequestHandler(_dbContext, _cachingService);
         var request = new GetSummaryStatsRequest();
-        
+
         // Act
         var result = await handler.Handle(request, CancellationToken.None);
-        
+
+        // Assert
+        Assert.NotNull(result);
+        Assert.NotNull(result.BestCountryByWinRatio);
+        Assert.Equal("US", result.BestCountryByWinRatio.Code);
+
+        var expectedImc = 23.39;
+        Assert.Equal(result.PlayersAverageImc, expectedImc);
+
+        var expectedMedianHeight = 165;
+        Assert.Equal(expectedMedianHeight, result.PlayersHeightMean);
+    }
+
+    // 160, 165, 175, 180 => median = (165 + 175) / 2 = 170
+    [Fact]
+    public async Task GetSummaryStats_ReturnsCorrectStats_Even()
+    {
+        // Arrange
+        var player4 = new Player
+        {
+            Id = 7,
+            FirstName = "John",
+            LastName = "Doe",
+            ShortName = "J.Doe",
+            Sex = Sex.Male,
+            Picture = "https://example.com/johndoe.png",
+            Data = new PlayerStats { Weight = 80000, Height = 180, Last = new[] { 1, 1, 0, 0, 1 } },
+            CountryCode = "US",
+        };
+
+        _dbContext.Players.Add(player4);
+        _dbContext.SaveChanges();
+
+        var handler = new GetSummaryStatsRequestHandler(_dbContext, _cachingService);
+        var request = new GetSummaryStatsRequest();
+
+        // Act
+        var result = await handler.Handle(request, CancellationToken.None);
+
         // Assert
         Assert.NotNull(result);
         Assert.NotNull(result.BestCountryByWinRatio);
         Assert.Equal("US", result.BestCountryByWinRatio.Code);
         
-        var expectedImc = 181.65;
-        Assert.Equal(result.PlayersAverageImc, expectedImc);
+        var expectedImc = 23.72;
+        Assert.Equal(expectedImc, result.PlayersAverageImc);
         
-        var expectedMedianHeight = 165;
+        var expectedMedianHeight = 170;
         Assert.Equal(expectedMedianHeight, result.PlayersHeightMean);
     }
 }
