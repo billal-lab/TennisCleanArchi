@@ -46,7 +46,7 @@ TennisCleanArchi is an api designed to manage tennis-related data, such as playe
 
 ---
 
-Feel free to contribute or ask questions if you need help!
+Feel free ask questions if you need help!
 
 ## Project Structure
 
@@ -137,5 +137,5 @@ The TennisCleanArchi API provides a RESTful interface to access tennis-related d
 
 Add your API key to the request header:
 ```
-X-API-KEY: your-api-key-here
+X-Api-Key: your-api-key-here
 ```
