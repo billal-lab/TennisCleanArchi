@@ -4,9 +4,9 @@ using Microsoft.OpenApi.Models;
 
 namespace TennisCleanArchi.Infrastructure.OpenApi;
 
-public static class Extensions
+internal static class Extensions
 {
-    public static IServiceCollection AddSwagger(this IServiceCollection services)
+    internal static IServiceCollection AddSwagger(this IServiceCollection services)
     {
         services.AddSwaggerGen(options =>
         {
@@ -50,7 +50,7 @@ public static class Extensions
         return services;
     }
 
-    public static IApplicationBuilder UseSwaggerUI(this IApplicationBuilder app)
+    internal static IApplicationBuilder UseSwaggerUI(this IApplicationBuilder app)
     {
         app.UseSwagger();
         app.UseSwaggerUI(c =>

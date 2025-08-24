@@ -2,7 +2,7 @@
 
 namespace TennisCleanArchi.Application.Stats.GetSummaryStats;
 
-public class SummaryStatsDto
+public record SummaryStatsDto
 {
     public CountryDto? BestCountryByWinRatio { get; set; }
     public double PlayersHeightMean { get; set; }

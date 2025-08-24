@@ -3,7 +3,7 @@ using MediatR;
 
 namespace TennisCleanArchi.Infrastructure.Validations;
 
-public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+internal sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     where TRequest : IRequest<TResponse>
 {
     private readonly IEnumerable<IValidator<TRequest>> _validators;
@@ -25,6 +25,6 @@ public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<
                 throw new ValidationException(failures);
         }
 
-        return await next();
+        return await next(cancellationToken);
     }
 }

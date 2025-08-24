@@ -5,7 +5,7 @@ using TennisCleanArchi.Shared;
 
 namespace TennisCleanArchi.Infrastructure.Persistance;
 
-public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options), IApplicationDbContext
+public sealed class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options), IApplicationDbContext
 {
     public DbSet<Player> Players { get; set; }
 

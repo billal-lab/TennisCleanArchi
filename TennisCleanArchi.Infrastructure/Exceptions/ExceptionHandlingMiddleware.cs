@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using TennisCleanArchi.Application.Common.Exceptions;
 
 namespace TennisCleanArchi.Infrastructure.Exceptions;
-public sealed class ExceptionHandlingMiddleware(RequestDelegate next)
+internal sealed class ExceptionHandlingMiddleware(RequestDelegate next)
 {
     public async Task InvokeAsync(HttpContext context)
     {
