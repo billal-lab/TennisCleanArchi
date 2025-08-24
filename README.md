@@ -96,7 +96,7 @@ Feel free to contribute or ask questions if you need help!
    dotnet run --project TennisCleanArchi.Host
    ```
 5. **Access Swagger**
-   - https://localhost:7084/swagger
+   - http://localhost:5045/swagger
 
 ## Tests
 
