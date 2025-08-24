@@ -24,6 +24,7 @@ public class AddPlayerRequestHandlerTests : BaseTests
     [Fact]
     public async Task Handle_WithValidRequest_ReturnsPlayerId()
     {
+        // Arrange
         var handler = new AddPlayerRequestHandler(_dbContext);
         var request = new AddPlayerRequest
         {

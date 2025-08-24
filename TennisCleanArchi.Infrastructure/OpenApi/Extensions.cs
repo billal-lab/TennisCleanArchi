@@ -21,6 +21,29 @@ public static class Extensions
                     } 
                 }
             );
+
+            options.AddSecurityDefinition("ApiKey", new OpenApiSecurityScheme
+            {
+                Description = "API Key needed to access the endpoints. X-Api-Key: {key}",
+                In = ParameterLocation.Header,
+                Name = "X-Api-Key",
+                Type = SecuritySchemeType.ApiKey,
+                Scheme = "ApiKey"
+            });
+            options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id = "ApiKey"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
         });
 
         return services;

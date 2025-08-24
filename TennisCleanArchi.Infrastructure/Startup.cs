@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using TennisCleanArchi.Application.Data;
+using TennisCleanArchi.Infrastructure.Auth;
 using TennisCleanArchi.Infrastructure.Exceptions;
 using TennisCleanArchi.Infrastructure.OpenApi;
 using TennisCleanArchi.Infrastructure.Persistance;
@@ -33,6 +34,7 @@ public static class Startup
     {
         app.UseSwaggerUI();
         app.UseMiddleware<ExceptionHandlingMiddleware>();
+        app.UseMiddleware<ApiKeyAuthMiddleware>();
         return app;
     }
 }
