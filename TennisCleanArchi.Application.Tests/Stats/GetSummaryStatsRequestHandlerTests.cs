@@ -1,4 +1,5 @@
-﻿using TennisCleanArchi.Application.Data;
+﻿using TennisCleanArchi.Application.Common.Caching;
+using TennisCleanArchi.Application.Common.Data;
 using TennisCleanArchi.Application.Stats.GetStats;
 using TennisCleanArchi.Domain;
 using TennisCleanArchi.Shared;
@@ -8,10 +9,13 @@ namespace TennisCleanArchi.Application.Tests.Stats;
 public class GetSummaryStatsRequestHandlerTests : BaseTests
 {
     private readonly IApplicationDbContext _dbContext;
+    private readonly ICachingService _cachingService;
 
     public GetSummaryStatsRequestHandlerTests()
     {
         _dbContext = Fixture.DbContext;
+        _cachingService = Fixture.CachingService;
+        
         SeedData();
     }
 
@@ -65,7 +69,7 @@ public class GetSummaryStatsRequestHandlerTests : BaseTests
     public async Task GetSummaryStats_ReturnsCorrectStats()
     {
         // Arrange
-        var handler = new GetSummaryStatsRequestHandler(_dbContext);
+        var handler = new GetSummaryStatsRequestHandler(_dbContext, _cachingService);
         var request = new GetSummaryStatsRequest();
         
         // Act

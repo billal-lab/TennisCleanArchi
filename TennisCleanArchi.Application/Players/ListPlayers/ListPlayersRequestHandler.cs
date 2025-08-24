@@ -2,7 +2,7 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using TennisCleanArchi.Application.Common;
-using TennisCleanArchi.Application.Data;
+using TennisCleanArchi.Application.Common.Data;
 
 namespace TennisCleanArchi.Application.Players.ListPlayers;
 

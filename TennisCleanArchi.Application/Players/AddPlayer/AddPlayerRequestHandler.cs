@@ -1,8 +1,8 @@
 ﻿using Mapster;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using TennisCleanArchi.Application.Common.Data;
 using TennisCleanArchi.Application.Common.Exceptions;
-using TennisCleanArchi.Application.Data;
 
 namespace TennisCleanArchi.Application.Players.AddPlayer;
 

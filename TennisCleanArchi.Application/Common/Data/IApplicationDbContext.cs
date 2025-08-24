@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using TennisCleanArchi.Domain;
 
-namespace TennisCleanArchi.Application.Data;
+namespace TennisCleanArchi.Application.Common.Data;
 
 public interface IApplicationDbContext
 {

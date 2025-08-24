@@ -1,4 +1,4 @@
-﻿using TennisCleanArchi.Application.Data;
+﻿using TennisCleanArchi.Application.Common.Data;
 using TennisCleanArchi.Application.Players.ListPlayers;
 using TennisCleanArchi.Domain;
 using TennisCleanArchi.Shared;

@@ -1,23 +1,35 @@
 ﻿using Mapster;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using TennisCleanArchi.Application.Common.Caching;
+using TennisCleanArchi.Application.Common.Data;
 using TennisCleanArchi.Application.Countries.ListCountries;
-using TennisCleanArchi.Application.Data;
 using TennisCleanArchi.Application.Stats.GetSummaryStats;
 
 namespace TennisCleanArchi.Application.Stats.GetStats;
 public class GetSummaryStatsRequestHandler : IRequestHandler<GetSummaryStatsRequest, SummaryStatsDto>
 {
     private readonly IApplicationDbContext _dbContext;
+    private readonly ICachingService _cachingService;
 
-    public GetSummaryStatsRequestHandler(IApplicationDbContext dbContext)
+    public GetSummaryStatsRequestHandler(IApplicationDbContext dbContext, ICachingService cachingService)
     {
         _dbContext = dbContext;
+        _cachingService = cachingService;
     }
 
-    //TODO: Check performance
-
     public async Task<SummaryStatsDto> Handle(GetSummaryStatsRequest request, CancellationToken cancellationToken)
+    {
+        // Try to get the stats from the cache
+        var cacheKey = "SummaryStats";
+
+        var cachedStats = await _cachingService.GetOrAddAsync<SummaryStatsDto>(cacheKey,
+            async () => await ComputeStats(cancellationToken), TimeSpan.FromMinutes(10));
+
+        return cachedStats;
+    }
+
+    private async Task<SummaryStatsDto> ComputeStats(CancellationToken cancellationToken)
     {
         var bestWinRatioCountry = await _dbContext.Countries
             .AsNoTracking()

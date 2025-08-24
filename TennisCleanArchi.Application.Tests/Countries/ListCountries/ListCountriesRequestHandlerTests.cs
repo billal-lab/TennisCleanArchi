@@ -1,5 +1,5 @@
+using TennisCleanArchi.Application.Common.Data;
 using TennisCleanArchi.Application.Countries.ListCountries;
-using TennisCleanArchi.Application.Data;
 
 namespace TennisCleanArchi.Application.Tests.Countries.ListCountries;
 

@@ -1,6 +1,9 @@
 ﻿using Mapster;
 using Microsoft.EntityFrameworkCore;
-using TennisCleanArchi.Application.Data;
+using Microsoft.Extensions.Caching.Memory;
+using TennisCleanArchi.Application.Common.Caching;
+using TennisCleanArchi.Application.Common.Data;
+using TennisCleanArchi.Infrastructure.Caching;
 using TennisCleanArchi.Infrastructure.Persistance;
 using TennisCleanArchi.Shared;
 
@@ -28,6 +31,15 @@ public class TestFixture
                 .Options;
 
             return new ApplicationDbContext(options);
+        }
+    }
+
+    public ICachingService CachingService
+    {
+        get
+        {
+            var momoryCache = new MemoryCache(new MemoryCacheOptions());
+            return new CachingService(momoryCache);
         }
     }
 }

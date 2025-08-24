@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using TennisCleanArchi.Application.Data;
+using TennisCleanArchi.Application.Common.Data;
 using TennisCleanArchi.Infrastructure.Auth;
+using TennisCleanArchi.Infrastructure.Caching;
 using TennisCleanArchi.Infrastructure.Exceptions;
 using TennisCleanArchi.Infrastructure.OpenApi;
 using TennisCleanArchi.Infrastructure.Persistance;
@@ -29,6 +30,8 @@ public static class Startup
         builder.Services.AddSwagger();
 
         builder.Services.AddRateLimiting();
+
+        builder.Services.AddCaching();
 
         return builder;
     }

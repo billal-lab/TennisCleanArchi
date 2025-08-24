@@ -1,5 +1,5 @@
-﻿using TennisCleanArchi.Application.Common.Exceptions;
-using TennisCleanArchi.Application.Data;
+﻿using TennisCleanArchi.Application.Common.Data;
+using TennisCleanArchi.Application.Common.Exceptions;
 using TennisCleanArchi.Application.Players.AddPlayer;
 
 namespace TennisCleanArchi.Application.Tests.Players.AddPlayer;
