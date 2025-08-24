@@ -81,11 +81,21 @@ Feel free to contribute or ask questions if you need help!
    ```sh
    dotnet restore
    ```
-3. **Launch the API**
+3. **Configure API Key**
+   
+   Create a `secrets.json` file for local development:
+   ```sh
+   dotnet user-secrets init --project TennisCleanArchi.Host
+   dotnet user-secrets set "ApiKey:Value" "your-api-key-value" --project TennisCleanArchi.Host
+   ```
+   
+   This sets up the API key that will be required for authentication.
+   
+4. **Launch the API**
    ```sh
    dotnet run --project TennisCleanArchi.Host
    ```
-4. **Access Swagger**
+5. **Access Swagger**
    - https://localhost:7084/swagger
 
 ## Tests
@@ -100,7 +110,7 @@ dotnet test
 - CI/CD via GitHub Actions (`.github/workflows/prd-api-build-deploy.yml`)
 - Deployment on Azure Web App (Free tier plan with 60 minutes of compute per day)
 - The application may be in a sleep state and require a brief warm-up period on first access
-- Live API: [https://tennis-api-c4azfefcdkdrfye0.canadacentral-01.azurewebsites.net/swagger](https://tennis-api-c4azfefcdkdrfye0.canadacentral-01.azurewebsites.net/swagger)
+- Live API: [ici](https://tennis-api-c4azfefcdkdrfye0.canadacentral-01.azurewebsites.net/swagger)
 
 ## How to Use the API
 
