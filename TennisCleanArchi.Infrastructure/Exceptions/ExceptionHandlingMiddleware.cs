@@ -42,6 +42,18 @@ public sealed class ExceptionHandlingMiddleware(RequestDelegate next)
             context.Response.StatusCode = StatusCodes.Status404NotFound;
             await context.Response.WriteAsJsonAsync(problemDetails);
         }
+        catch (ConflictException ex)
+        {
+            var problemDetails = new ProblemDetails
+            {
+                Status = StatusCodes.Status409Conflict,
+                Type = "Conflict",
+                Title = "A conflict occurred with the current state of the resource.",
+                Detail = ex.Message
+            };
+            context.Response.StatusCode = StatusCodes.Status409Conflict;
+            await context.Response.WriteAsJsonAsync(problemDetails);
+        }
         catch (Exception e)
         {
             var problemDetails = new ProblemDetails

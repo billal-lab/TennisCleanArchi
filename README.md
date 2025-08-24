@@ -95,8 +95,17 @@ Feel free ask questions if you need help!
    ```sh
    dotnet run --project TennisCleanArchi.Host
    ```
+   
+   The application will automatically seed the database with sample players and countries on startup.
+   
 5. **Access Swagger**
    - http://localhost:5045/swagger
+
+## Data Seeding
+
+The application uses an in-memory database that is seeded with sample data on startup.
+
+The seeding process is handled by the `ApplicationSeeder` class in the Infrastructure layer and is automatically triggered when the application starts. This ensures you always have sample data to work with when developing or testing the API.
 
 ## Tests
 
@@ -111,13 +120,13 @@ dotnet test
 
 The project uses two GitHub Actions workflows:
 
-1. **Development Pipeline** (`.github/workflows/dev-api-build-deploy.yml`)
+1. **Development Pipeline** (`.github/workflows/dev-api-build-test.yml`)
    - Triggered on changes to `develop` branch
    - Builds and tests the application
 
 2. **Production Pipeline** (`.github/workflows/prod-api-build-deploy.yml`)
    - Triggered on changes to the `master` branch
-   - Builds, tests, and deploys to production environment
+   - Builds and deploys to production environment
 
 ### Environment
 

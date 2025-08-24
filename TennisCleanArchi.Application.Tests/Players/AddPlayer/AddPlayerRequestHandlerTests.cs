@@ -1,6 +1,7 @@
 ﻿using TennisCleanArchi.Application.Common.Data;
 using TennisCleanArchi.Application.Common.Exceptions;
 using TennisCleanArchi.Application.Players.AddPlayer;
+using TennisCleanArchi.Shared;
 
 namespace TennisCleanArchi.Application.Tests.Players.AddPlayer;
 
@@ -77,5 +78,56 @@ public class AddPlayerRequestHandlerTests : BaseTests
 
         // Act & Assert
         await Assert.ThrowsAsync<NotFoundException>(async () => await handler.Handle(request, CancellationToken.None));
+    }
+
+    [Fact]
+    public async Task Handle_WithDuplicateRank_ThrowsConflictException()
+    {
+        // Arrange
+        var player1 = new Domain.Player
+        {
+            FirstName = "Mick",
+            LastName = "Scott",
+            ShortName = "M.Scott",
+            Picture = "http://example.com/mick.png",
+            CountryCode = "USA",
+            Sex = Sex.Male,
+            Data = new Domain.PlayerStats
+            {
+                Age = 30,
+                Height = 180,
+                Weight = 75,
+                Points = 1500,
+                Rank = 75, // Rank to be duplicated
+                Last = [1, 0, 1, 1, 0]
+            },
+        };
+
+        await _dbContext.Players.AddAsync(player1);
+        await _dbContext.SaveChangesAsync();
+
+        var request = new AddPlayerRequest
+        {
+            FirstName = "Max",
+            LastName = "Smith",
+            CountryCode = "USA",
+            Sex = "M",
+            ShortName =  "M.Smith",
+            Picture = "http://example.com/picture.jpg",
+            Data = new Domain.PlayerStats
+            {
+                Age = 40,
+                Height = 185,
+                Weight = 85,
+                Points = 1000,
+                Rank = 75,
+                Last = [1, 1, 0, 1, 1]
+            }
+        };
+
+        var handler = new AddPlayerRequestHandler(_dbContext);
+
+        // Act & Assert
+        await Assert.ThrowsAsync<ConflictException>(async () => await handler.Handle(request, CancellationToken.None));
     }
 }

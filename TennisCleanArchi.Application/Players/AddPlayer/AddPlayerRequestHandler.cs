@@ -25,6 +25,13 @@ public class AddPlayerRequestHandler : IRequestHandler<AddPlayerRequest, int>
             throw new NotFoundException($"Country with code {request.CountryCode} not found");
         }
 
+        // Check if a player with the same rank
+        // TODO: Check p.Sex.Value == request.Sex ?
+        if (await _dbContext.Players.AnyAsync(p => p.Data.Rank == request.Data.Rank, cancellationToken))
+        {
+            throw new ConflictException($"Player with rank {request.Data.Rank} already exists");
+        }
+
         // Add the new player to the database context
         await _dbContext.Players.AddAsync(player, cancellationToken);
 

@@ -10,6 +10,7 @@ public static class Extensions
     {
         services.AddSwaggerGen(options =>
         {
+            options.EnableAnnotations();
             options.SwaggerDoc("v1", 
                 new OpenApiInfo
                 { 
