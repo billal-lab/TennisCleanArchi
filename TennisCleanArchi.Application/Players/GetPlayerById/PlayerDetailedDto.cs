@@ -4,7 +4,7 @@ using TennisCleanArchi.Domain;
 
 namespace TennisCleanArchi.Application.Players.GetPlayerById;
 
-public class PlayerDetailedDto : PlayerDto
+public record PlayerDetailedDto : PlayerDto
 {
     public CountryDto Country { get; set; }
     public PlayerStats Data { get; set; }

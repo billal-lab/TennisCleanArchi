@@ -3,9 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 using TennisCleanArchi.Application.Common.Caching;
 namespace TennisCleanArchi.Infrastructure.Caching;
 
-public static class Extensions
+internal static class Extensions
 {
-	public static IServiceCollection AddCaching(this IServiceCollection services)
+	internal static IServiceCollection AddCaching(this IServiceCollection services)
 	{
 		services.AddMemoryCache();
 		services.AddScoped<ICachingService, CachingService>();

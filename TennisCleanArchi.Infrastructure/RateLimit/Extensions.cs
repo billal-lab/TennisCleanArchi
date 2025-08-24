@@ -5,9 +5,9 @@ using System.Threading.RateLimiting;
 
 namespace TennisCleanArchi.Infrastructure.RateLimit;
 
-public static class Extensions
+internal static class Extensions
 {
-    public static IServiceCollection AddRateLimiting(this IServiceCollection services)
+    internal static IServiceCollection AddRateLimiting(this IServiceCollection services)
     {
         services.AddRateLimiter(options =>
         {

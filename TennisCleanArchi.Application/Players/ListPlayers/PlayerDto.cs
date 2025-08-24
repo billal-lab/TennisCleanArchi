@@ -1,6 +1,6 @@
 ﻿namespace TennisCleanArchi.Application.Players.ListPlayers;
 
-public class PlayerDto
+public record PlayerDto
 {
     public int Id { get; set; }
     public string FirstName { get; set; }
