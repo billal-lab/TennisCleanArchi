@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TennisCleanArchi.Application\TennisCleanArchi.Application.csproj" />
     <ProjectReference Include="..\TennisCleanArchi.Infrastructure\TennisCleanArchi.Infrastructure.csproj" />
     <ProjectReference Include="..\TennisCleanArchi.Shared\TennisCleanArchi.Shared.csproj" />

@@ -1,21 +1,19 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 using TennisCleanArchi.Application.Players.AddPlayer;
 
 namespace TennisCleanArchi.Host.Controllers;
 
-[ApiController]
-[Route("[controller]")]
-public class PlayersController : ControllerBase
+public class PlayersController : BaseController
 {
-    private readonly IMediator _mediator;
-
     public PlayersController(IMediator mediator)
+        : base(mediator)
     {
-        _mediator = mediator;
     }
 
     [HttpGet]
+    [SwaggerOperation(Summary = "Get a paginated list of players", Description = "Page size max is 100")]
     public async Task<IActionResult> GetPlayers([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
     {
         var query = new Application.Players.ListPlayers.ListPlayersRequest
@@ -28,6 +26,7 @@ public class PlayersController : ControllerBase
     }
 
     [HttpGet("{id}")]
+    [SwaggerOperation(Summary = "Get a player by ID")]
     public async Task<IActionResult> GetPlayerById(int id)
     {
         var query = new Application.Players.GetPlayerById.GetPlayerByIdRequest
@@ -43,6 +42,7 @@ public class PlayersController : ControllerBase
     }
 
     [HttpPost]
+    [SwaggerOperation(Summary = "Add a new player", Description = "Player rank must be unique.\n\nSex must be 'M' or 'F'")]
     public async Task<IActionResult> AddPlayer([FromBody] AddPlayerRequest request, CancellationToken cancellationToken)
     {
         var playerId = await _mediator.Send(request, cancellationToken);

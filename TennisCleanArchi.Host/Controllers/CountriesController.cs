@@ -1,19 +1,17 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace TennisCleanArchi.Host.Controllers;
-
-[Route("api/[controller]")]
-[ApiController]
-public class CountriesController : ControllerBase
+public class CountriesController : BaseController
 {
-    private readonly IMediator _mediator;
     public CountriesController(IMediator mediator)
+        : base(mediator)
     {
-        _mediator = mediator;
     }
 
     [HttpGet]
+    [SwaggerOperation(Summary = "Get a paginated list of countries", Description = "Page size max is 100")]
     public async Task<IActionResult> GetCountries([FromQuery] int pageNumber = 1, [FromQuery] int pageSize = 10)
     {
         var query = new Application.Countries.ListCountries.ListCountriesRequest

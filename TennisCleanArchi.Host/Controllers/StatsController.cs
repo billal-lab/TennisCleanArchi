@@ -1,19 +1,18 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace TennisCleanArchi.Host.Controllers;
 
-[Route("api/[controller]")]
-[ApiController]
-public class StatsController : ControllerBase
+public class StatsController : BaseController
 {
-    private readonly IMediator _mediator;
     public StatsController(IMediator mediator)
+        : base(mediator)
     {
-        _mediator = mediator;
     }
 
     [HttpGet("Summary")]
+    [SwaggerOperation(Summary = "Get summary statistics", Description = "Country with best win ratio.\n\nAverage BMI.\n\nMedian height of players.")]
 
     public async Task<IActionResult> GetSummaryStats(CancellationToken cancellationToken)
     {

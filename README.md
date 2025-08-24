@@ -117,7 +117,7 @@ The project uses two GitHub Actions workflows:
 
 2. **Production Pipeline** (`.github/workflows/prod-api-build-deploy.yml`)
    - Triggered on changes to the `master` branch
-   - Builds, tests, and deploys to production environment
+   - Builds and deploys to production environment
 
 ### Environment
 
