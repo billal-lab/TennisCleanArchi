@@ -120,7 +120,7 @@ dotnet test
 
 The project uses two GitHub Actions workflows:
 
-1. **Development Pipeline** (`.github/workflows/dev-api-build-deploy.yml`)
+1. **Development Pipeline** (`.github/workflows/dev-api-build-test.yml`)
    - Triggered on changes to `develop` branch
    - Builds and tests the application
 
