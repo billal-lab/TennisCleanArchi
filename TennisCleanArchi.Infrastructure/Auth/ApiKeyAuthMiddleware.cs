@@ -21,12 +21,14 @@ namespace TennisCleanArchi.Infrastructure.Auth
                 await _next(context);
                 return;
             }
+
             if (!context.Request.Headers.TryGetValue("X-Api-Key", out var providedKey) || providedKey != _apiKey)
             {
                 context.Response.StatusCode = 401;
                 await context.Response.WriteAsync("Unauthorized: Invalid or missing API Key");
                 return;
             }
+
             await _next(context);
         }
 

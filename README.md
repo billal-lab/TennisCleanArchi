@@ -46,7 +46,7 @@ TennisCleanArchi is an api designed to manage tennis-related data, such as playe
 
 ---
 
-Feel free to contribute or ask questions if you need help!
+Feel free ask questions if you need help!
 
 ## Project Structure
 
@@ -96,7 +96,7 @@ Feel free to contribute or ask questions if you need help!
    dotnet run --project TennisCleanArchi.Host
    ```
 5. **Access Swagger**
-   - https://localhost:7084/swagger
+   - http://localhost:5045/swagger
 
 ## Tests
 
@@ -107,10 +107,27 @@ dotnet test
 
 ## Deployment
 
-- CI/CD via GitHub Actions (`.github/workflows/prd-api-build-deploy.yml`)
-- Deployment on Azure Web App (Free tier plan with 60 minutes of compute per day)
-- The application may be in a sleep state and require a brief warm-up period on first access
-- Live API: [ici](https://tennis-api-c4azfefcdkdrfye0.canadacentral-01.azurewebsites.net/swagger)
+### CI/CD Pipelines
+
+The project uses two GitHub Actions workflows:
+
+1. **Development Pipeline** (`.github/workflows/dev-api-build-deploy.yml`)
+   - Triggered on changes to `develop` branch
+   - Builds and tests the application
+
+2. **Production Pipeline** (`.github/workflows/prod-api-build-deploy.yml`)
+   - Triggered on changes to the `master` branch
+   - Builds, tests, and deploys to production environment
+
+### Environment
+
+- **Hosting**: Azure Web App (Free tier plan with 60 minutes of compute per day)
+- **Region**: France Central
+- **Scaling**: The application may be in a sleep state and require a brief warm-up period on first access
+
+### Live API
+
+- Access the live API and Swagger documentation: [Tennis API](https://tennis-api-c4azfefcdkdrfye0.canadacentral-01.azurewebsites.net/swagger)
 
 ## How to Use the API
 
@@ -120,5 +137,5 @@ The TennisCleanArchi API provides a RESTful interface to access tennis-related d
 
 Add your API key to the request header:
 ```
-X-API-KEY: your-api-key-here
+X-Api-Key: your-api-key-here
 ```
