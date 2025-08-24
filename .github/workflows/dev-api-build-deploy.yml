@@ -1,9 +1,7 @@
-name: Build and deploy ASP.Net Core app to an Azure Web App
+name: Build and Test ASP.Net Core app to an Azure Web App
 
 env:
-  AZURE_WEBAPP_NAME: 'tennis-api'
-  AZURE_WEBAPP_PACKAGE_PATH: '.'     
-  DOTNET_VERSION: '9'               
+  DOTNET_VERSION: '9'
 
 on:
   push:
