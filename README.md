@@ -95,8 +95,17 @@ Feel free ask questions if you need help!
    ```sh
    dotnet run --project TennisCleanArchi.Host
    ```
+   
+   The application will automatically seed the database with sample players and countries on startup.
+   
 5. **Access Swagger**
    - http://localhost:5045/swagger
+
+## Data Seeding
+
+The application uses an in-memory database that is seeded with sample data on startup.
+
+The seeding process is handled by the `ApplicationSeeder` class in the Infrastructure layer and is automatically triggered when the application starts. This ensures you always have sample data to work with when developing or testing the API.
 
 ## Tests
 
