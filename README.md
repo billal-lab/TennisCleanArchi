@@ -112,17 +112,17 @@ dotnet test
 The project uses two GitHub Actions workflows:
 
 1. **Development Pipeline** (`.github/workflows/dev-api-build-deploy.yml`)
-   - Triggered on changes to development branches
+   - Triggered on changes to `develop` branch
    - Builds and tests the application
 
 2. **Production Pipeline** (`.github/workflows/prod-api-build-deploy.yml`)
-   - Triggered on changes to the `develop` branch
+   - Triggered on changes to the `master` branch
    - Builds, tests, and deploys to production environment
 
 ### Environment
 
 - **Hosting**: Azure Web App (Free tier plan with 60 minutes of compute per day)
-- **Region**: Canada Central
+- **Region**: France Central
 - **Scaling**: The application may be in a sleep state and require a brief warm-up period on first access
 
 ### Live API
