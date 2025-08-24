@@ -42,7 +42,7 @@ public sealed class ExceptionHandlingMiddleware(RequestDelegate next)
             context.Response.StatusCode = StatusCodes.Status404NotFound;
             await context.Response.WriteAsJsonAsync(problemDetails);
         }
-        catch (Exception)
+        catch (Exception e)
         {
             var problemDetails = new ProblemDetails
             {

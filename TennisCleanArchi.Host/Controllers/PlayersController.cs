@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using TennisCleanArchi.Application.Players.AddPlayer;
 
 namespace TennisCleanArchi.Host.Controllers;
 
@@ -39,5 +40,12 @@ public class PlayersController : ControllerBase
             return NotFound();
         }
         return Ok(player);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> AddPlayer([FromBody] AddPlayerRequest request, CancellationToken cancellationToken)
+    {
+        var playerId = await _mediator.Send(request, cancellationToken);
+        return new CreatedResult(nameof(GetPlayerById), new { id = playerId });
     }
 }

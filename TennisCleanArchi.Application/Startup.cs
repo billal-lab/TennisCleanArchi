@@ -2,7 +2,7 @@
 using Mapster;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using TennisCleanArchi.Application.Players;
+using TennisCleanArchi.Shared;
 
 namespace TennisCleanArchi.Application;
 
@@ -18,9 +18,13 @@ public static class Startup
         // add mediatr
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
 
-        // Mapster configuration: player to player dto
-        TypeAdapterConfig<Domain.Player, PlayerDto>.NewConfig()
-            .Map(dest => dest.Sex, src => src.Sex.Value);
+        // mapster : string - sex mapping
+        TypeAdapterConfig<string, Sex>.NewConfig()
+            .MapWith(value => Sex.FromValue(value));
+
+        // mapster : sex - string mapping
+        TypeAdapterConfig<Sex, string>.NewConfig()
+            .MapWith(value => value.Value);
 
         return services;
     }
