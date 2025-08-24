@@ -20,9 +20,9 @@ public class ListPlayersRequestHandler : IRequestHandler<ListPlayersRequest, Pag
     {
         var items = await _dbContext.Players
             .AsNoTracking()
+            .OrderBy(p => p.Data.Rank)
             .Skip((request.PageNumber - 1) * request.PageSize)
             .Take(request.PageSize)
-            .OrderBy(p => p.Data.Rank)
             .Select(p => p.Adapt<PlayerDto>())
             .ToListAsync(cancellationToken);
 

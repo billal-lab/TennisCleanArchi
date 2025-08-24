@@ -6,11 +6,11 @@ using TennisCleanArchi.Application.Data;
 
 namespace TennisCleanArchi.Application.Players.GetPlayerById;
 
-public class GetPlayerByIdHandler : IRequestHandler<GetPlayerByIdRequest, PlayerDetailedDto>
+public class GetPlayerByIdRequestHandler : IRequestHandler<GetPlayerByIdRequest, PlayerDetailedDto>
 {
 
     private readonly IApplicationDbContext _dbContext;
-    public GetPlayerByIdHandler(IApplicationDbContext dbContext)
+    public GetPlayerByIdRequestHandler(IApplicationDbContext dbContext)
     {
         _dbContext = dbContext;
     }

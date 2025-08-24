@@ -1,5 +1,7 @@
 ﻿using Mapster;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
+using TennisCleanArchi.Application.Common.Exceptions;
 using TennisCleanArchi.Application.Data;
 
 namespace TennisCleanArchi.Application.Players.AddPlayer;
@@ -17,6 +19,11 @@ public class AddPlayerRequestHandler : IRequestHandler<AddPlayerRequest, int>
     {
         // Create the player by mapping the request to the Player domain model
         var player = request.Adapt<Domain.Player>();
+
+        if(!await _dbContext.Countries.AnyAsync(c => c.Code == request.CountryCode, cancellationToken))
+        {
+            throw new NotFoundException($"Country with code {request.CountryCode} not found");
+        }
 
         // Add the new player to the database context
         await _dbContext.Players.AddAsync(player, cancellationToken);

@@ -1,5 +1,4 @@
 using System.Net;
-using TennisCleanArchi.Application.Common.Exceptions;
 
 namespace TennisCleanArchi.Application.Common.Exceptions;
 public class NotFoundException : CustomException

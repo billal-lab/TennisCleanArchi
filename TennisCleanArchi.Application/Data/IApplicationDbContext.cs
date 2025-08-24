@@ -10,4 +10,6 @@ public interface IApplicationDbContext
     DbSet<Country> Countries { get; set; }
 
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+
+    int SaveChanges();
 }
