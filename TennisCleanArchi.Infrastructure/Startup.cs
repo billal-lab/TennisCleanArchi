@@ -8,6 +8,7 @@ using TennisCleanArchi.Infrastructure.Auth;
 using TennisCleanArchi.Infrastructure.Exceptions;
 using TennisCleanArchi.Infrastructure.OpenApi;
 using TennisCleanArchi.Infrastructure.Persistance;
+using TennisCleanArchi.Infrastructure.RateLimit;
 using TennisCleanArchi.Infrastructure.Validations;
 
 namespace TennisCleanArchi.Infrastructure;
@@ -27,11 +28,14 @@ public static class Startup
 
         builder.Services.AddSwagger();
 
+        builder.Services.AddRateLimiting();
+
         return builder;
     }
 
     public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder app)
     {
+        app.UseRateLimiter();
         app.UseSwaggerUI();
         app.UseMiddleware<ExceptionHandlingMiddleware>();
         app.UseMiddleware<ApiKeyAuthMiddleware>();
