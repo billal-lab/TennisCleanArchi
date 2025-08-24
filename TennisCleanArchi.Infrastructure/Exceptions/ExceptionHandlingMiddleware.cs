@@ -31,13 +31,14 @@ internal sealed class ExceptionHandlingMiddleware(RequestDelegate next)
 
             await context.Response.WriteAsJsonAsync(problemDetails);
         }
-        catch (NotFoundException)
+        catch (NotFoundException e)
         {
             var problemDetails = new ProblemDetails
             {
                 Status = StatusCodes.Status404NotFound,
                 Type = "NotFound",
-                Title = "The specified resource was not found."
+                Title = "The specified resource was not found.",
+                Detail = e.Message
             };
             context.Response.StatusCode = StatusCodes.Status404NotFound;
             await context.Response.WriteAsJsonAsync(problemDetails);
