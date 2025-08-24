@@ -1,4 +1,4 @@
-﻿namespace TennisCleanArchi.Application.Players;
+﻿namespace TennisCleanArchi.Application.Players.ListPlayers;
 
 public class PlayerDto
 {

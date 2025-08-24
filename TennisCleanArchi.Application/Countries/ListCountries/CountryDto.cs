@@ -1,4 +1,4 @@
-﻿namespace TennisCleanArchi.Application.Countries;
+﻿namespace TennisCleanArchi.Application.Countries.ListCountries;
 
 public class CountryDto
 {

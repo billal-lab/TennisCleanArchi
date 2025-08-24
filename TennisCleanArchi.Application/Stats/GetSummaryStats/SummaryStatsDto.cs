@@ -1,8 +1,8 @@
-﻿using TennisCleanArchi.Application.Countries;
+﻿using TennisCleanArchi.Application.Countries.ListCountries;
 
-namespace TennisCleanArchi.Application.Stats;
+namespace TennisCleanArchi.Application.Stats.GetSummaryStats;
 
-public class StatsDto
+public class SummaryStatsDto
 {
     public CountryDto? BestCountryByWinRatio { get; set; }
     public double PlayersHeightMean { get; set; }

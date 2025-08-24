@@ -1,11 +1,12 @@
 ﻿using Mapster;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using TennisCleanArchi.Application.Countries;
+using TennisCleanArchi.Application.Countries.ListCountries;
 using TennisCleanArchi.Application.Data;
+using TennisCleanArchi.Application.Stats.GetSummaryStats;
 
 namespace TennisCleanArchi.Application.Stats.GetStats;
-public class GetSummaryStatsRequestHandler : IRequestHandler<GetSummaryStatsRequest, StatsDto>
+public class GetSummaryStatsRequestHandler : IRequestHandler<GetSummaryStatsRequest, SummaryStatsDto>
 {
     private readonly IApplicationDbContext _dbContext;
 
@@ -16,7 +17,7 @@ public class GetSummaryStatsRequestHandler : IRequestHandler<GetSummaryStatsRequ
 
     //TODO: Check performance
 
-    public async Task<StatsDto> Handle(GetSummaryStatsRequest request, CancellationToken cancellationToken)
+    public async Task<SummaryStatsDto> Handle(GetSummaryStatsRequest request, CancellationToken cancellationToken)
     {
         var bestWinRatioCountry = await _dbContext.Countries
             .AsNoTracking()
@@ -42,7 +43,7 @@ public class GetSummaryStatsRequestHandler : IRequestHandler<GetSummaryStatsRequ
             .Select(h => (double)h)
             .FirstOrDefaultAsync(cancellationToken);
 
-        return new StatsDto
+        return new SummaryStatsDto
         {
             BestCountryByWinRatio = bestWinRatioCountry,
             PlayersAverageImc = Math.Round(averageImc, 2),
